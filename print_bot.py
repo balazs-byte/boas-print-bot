@@ -10,10 +10,12 @@ DYMO_API = "https://localhost:41951/DYMO/DLS/Printing"
 
 def print_sku_label(sku):
     date_str = datetime.now().strftime("%d-%m-%Y")
-    label_text = f"{sku}\n{date_str}"
 
     with open("label.xml", "r") as f:
-        label_xml = f.read().replace("LABEL_TEXT", label_text)
+        label_xml = f.read()
+    
+    label_xml = label_xml.replace("Label_Test", sku)
+    label_xml = label_xml.replace("Date", date_str)
 
     payload = {
         "printerName": "DYMO LabelWriter 4XL",
