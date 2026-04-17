@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-DYMO_API = "http://localhost:41951/DYMO/DLS/Printing"
+DYMO_API = "https://localhost:41951/DYMO/DLS/Printing"
 
 def print_sku_label(sku):
     date_str = datetime.now().strftime("%d-%m-%Y")
@@ -55,7 +55,7 @@ def print_sku_label(sku):
         "labelXml": label_xml,
         "labelSetXml": ""
     }
-    response = requests.post(f"{DYMO_API}/PrintLabel", data=payload)
+    response = requests.post(f"{DYMO_API}/PrintLabel", data=payload, verify=False)
     print(f"Print response: {response.status_code} - {response.text}")
 
 @app.route("/webhook/product-created", methods=["POST"])
