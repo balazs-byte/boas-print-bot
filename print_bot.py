@@ -1,7 +1,8 @@
-import os
 import requests
 from datetime import datetime
 from flask import Flask, request, jsonify
+import urllib3
+urllib3.disable_warnings()
 
 app = Flask(__name__)
 
@@ -10,44 +11,45 @@ DYMO_API = "https://localhost:41951/DYMO/DLS/Printing"
 def print_sku_label(sku):
     date_str = datetime.now().strftime("%d-%m-%Y")
     label_text = f"{sku} | {date_str}"
-    
-    label_xml = f"""<?xml version="1.0" encoding="utf-8"?>
-<DieCutLabel Version="8.0" Units="twips">
-    <PaperOrientation>Landscape</PaperOrientation>
-    <Id>Address</Id>
-    <PaperName>30256 Shipping</PaperName>
-    <DrawCommands>
-        <RoundRectangle X="0" Y="0" Width="3331" Height="5765" Rx="270" Ry="270"/>
-    </DrawCommands>
-    <ObjectInfo>
-        <TextObject>
-            <Name>SKU</Name>
+
+    label_xml = """<?xml version="1.0" encoding="utf-8"?>
+<DieCutLabel Version="8.0" Units="twips" MediaType="Default">
+  <PaperOrientation>Landscape</PaperOrientation>
+  <Id>shipping</Id>
+  <IsOutlined>False</IsOutlined>
+  <PaperName>30256 Shipping</PaperName>
+  <DrawCommands>
+    <RoundRectangle X="0" Y="0" Width="3331" Height="5765" Rx="270" Ry="270"/>
+  </DrawCommands>
+  <ObjectInfo>
+    <TextObject>
+      <Name>Text</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="0" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName/>
+      <Rotation>Rotation0</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>False</IsVariable>
+      <HorizontalAlignment>Center</HorizontalAlignment>
+      <VerticalAlignment>Middle</VerticalAlignment>
+      <TextFitMode>ShrinkToFit</TextFitMode>
+      <UseFullFontHeight>True</UseFullFontHeight>
+      <Verticalized>False</Verticalized>
+      <StyledText>
+        <Element>
+          <String>""" + label_text + """</String>
+          <Attributes>
+            <Font Family="Helvetica" Size="36" Bold="True" Italic="False" Underline="False" StrikeOut="False"/>
             <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
-            <BackColor Alpha="0" Red="255" Green="255" Blue="255"/>
-            <LinkedObjectName></LinkedObjectName>
-            <Rotation>Rotation0</Rotation>
-            <IsMirrored>False</IsMirrored>
-            <IsVariable>True</IsVariable>
-            <HorizontalAlignment>Center</HorizontalAlignment>
-            <VerticalAlignment>Middle</VerticalAlignment>
-            <TextFitMode>ShrinkToFit</TextFitMode>
-            <UseFullFontHeight>True</UseFullFontHeight>
-            <Verticalized>False</Verticalized>
-            <StyledText>
-                <Element>
-                    <String>{label_text}</String>
-                    <Attributes>
-                        <Font Family="Helvetica" Size="36" Bold="True" Italic="False" Underline="False" StrikeOut="False"/>
-                        <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
-                    </Attributes>
-                </Element>
-            </StyledText>
-        </TextObject>
-        <ObjectLayout>
-            <DYMOPoint><X>100</X><Y>100</Y></DYMOPoint>
-            <Size><Width>5565</Width><Height>3131</Height></Size>
-        </ObjectLayout>
-    </ObjectInfo>
+          </Attributes>
+        </Element>
+      </StyledText>
+    </TextObject>
+    <ObjectLayout>
+      <DYMOPoint><X>100</X><Y>100</Y></DYMOPoint>
+      <Size><Width>5565</Width><Height>3131</Height></Size>
+    </ObjectLayout>
+  </ObjectInfo>
 </DieCutLabel>"""
 
     payload = {
