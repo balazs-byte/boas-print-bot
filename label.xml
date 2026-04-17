@@ -61,19 +61,36 @@
           </Margin>
           <HorizontalAlignment>Center</HorizontalAlignment>
           <VerticalAlignment>Middle</VerticalAlignment>
-          <FitMode>AlwaysFit</FitMode>
+          <FitMode>None</FitMode>
           <IsVertical>False</IsVertical>
           <FormattedText>
-            <FitMode>AlwaysFit</FitMode>
+            <FitMode>None</FitMode>
             <HorizontalAlignment>Center</HorizontalAlignment>
             <VerticalAlignment>Middle</VerticalAlignment>
             <IsVertical>False</IsVertical>
             <LineTextSpan>
               <TextSpan>
-                <Text>LABEL_TEXT</Text>
+                <Text>Label_Test</Text>
                 <FontInfo>
                   <FontName>Segoe UI</FontName>
-                  <FontSize>14</FontSize>
+                  <FontSize>12</FontSize>
+                  <IsBold>True</IsBold>
+                  <IsItalic>False</IsItalic>
+                  <IsUnderline>False</IsUnderline>
+                  <FontBrush>
+                    <SolidColorBrush>
+                      <Color A="1" R="0" G="0" B="0"></Color>
+                    </SolidColorBrush>
+                  </FontBrush>
+                </FontInfo>
+              </TextSpan>
+            </LineTextSpan>
+            <LineTextSpan>
+              <TextSpan>
+                <Text />
+                <FontInfo>
+                  <FontName>Segoe UI</FontName>
+                  <FontSize>12</FontSize>
                   <IsBold>True</IsBold>
                   <IsItalic>False</IsItalic>
                   <IsUnderline>False</IsUnderline>
@@ -86,3 +103,109 @@
               </TextSpan>
             </LineTextSpan>
           </FormattedText>
+          <ObjectLayout>
+            <DYMOPoint>
+              <X>0.21104074</X>
+              <Y>0.6345835</Y>
+            </DYMOPoint>
+            <Size>
+              <Width>0.5337508</Width>
+              <Height>1.085</Height>
+            </Size>
+          </ObjectLayout>
+        </TextObject>
+        <TextObject>
+          <Name>TextObject12</Name>
+          <Brushes>
+            <BackgroundBrush>
+              <SolidColorBrush>
+                <Color A="0" R="0" G="0" B="0"></Color>
+              </SolidColorBrush>
+            </BackgroundBrush>
+            <BorderBrush>
+              <SolidColorBrush>
+                <Color A="1" R="0" G="0" B="0"></Color>
+              </SolidColorBrush>
+            </BorderBrush>
+            <StrokeBrush>
+              <SolidColorBrush>
+                <Color A="1" R="0" G="0" B="0"></Color>
+              </SolidColorBrush>
+            </StrokeBrush>
+            <FillBrush>
+              <SolidColorBrush>
+                <Color A="0" R="0" G="0" B="0"></Color>
+              </SolidColorBrush>
+            </FillBrush>
+          </Brushes>
+          <Rotation>Rotation270</Rotation>
+          <OutlineThickness>1</OutlineThickness>
+          <IsOutlined>False</IsOutlined>
+          <BorderStyle>SolidLine</BorderStyle>
+          <Margin>
+            <DYMOThickness Left="0" Top="0" Right="0" Bottom="0" />
+          </Margin>
+          <HorizontalAlignment>Center</HorizontalAlignment>
+          <VerticalAlignment>Middle</VerticalAlignment>
+          <FitMode>None</FitMode>
+          <IsVertical>False</IsVertical>
+          <FormattedText>
+            <FitMode>None</FitMode>
+            <HorizontalAlignment>Center</HorizontalAlignment>
+            <VerticalAlignment>Middle</VerticalAlignment>
+            <IsVertical>False</IsVertical>
+            <LineTextSpan>
+              <TextSpan>
+                <Text>Date</Text>
+                <FontInfo>
+                  <FontName>Segoe UI</FontName>
+                  <FontSize>12</FontSize>
+                  <IsBold>True</IsBold>
+                  <IsItalic>False</IsItalic>
+                  <IsUnderline>False</IsUnderline>
+                  <FontBrush>
+                    <SolidColorBrush>
+                      <Color A="1" R="0" G="0" B="0"></Color>
+                    </SolidColorBrush>
+                  </FontBrush>
+                </FontInfo>
+              </TextSpan>
+            </LineTextSpan>
+            <LineTextSpan>
+              <TextSpan>
+                <Text />
+                <FontInfo>
+                  <FontName>Segoe UI</FontName>
+                  <FontSize>12</FontSize>
+                  <IsBold>True</IsBold>
+                  <IsItalic>False</IsItalic>
+                  <IsUnderline>False</IsUnderline>
+                  <FontBrush>
+                    <SolidColorBrush>
+                      <Color A="1" R="0" G="0" B="0"></Color>
+                    </SolidColorBrush>
+                  </FontBrush>
+                </FontInfo>
+              </TextSpan>
+            </LineTextSpan>
+          </FormattedText>
+          <ObjectLayout>
+            <DYMOPoint>
+              <X>0.6249999</X>
+              <Y>0.5825</Y>
+            </DYMOPoint>
+            <Size>
+              <Width>0.565</Width>
+              <Height>1.085</Height>
+            </Size>
+          </ObjectLayout>
+        </TextObject>
+      </LabelObjects>
+    </DynamicLayoutManager>
+  </DYMOLabel>
+  <LabelApplication>Blank</LabelApplication>
+  <DataTable>
+    <Columns></Columns>
+    <Rows></Rows>
+  </DataTable>
+</DesktopLabel>
