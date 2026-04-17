@@ -1,5 +1,6 @@
 import os
 import requests
+from datetime import datetime
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
@@ -7,6 +8,9 @@ app = Flask(__name__)
 DYMO_API = "http://localhost:41951/DYMO/DLS/Printing"
 
 def print_sku_label(sku):
+    date_str = datetime.now().strftime("%d-%m-%Y")
+    label_text = f"{sku} | {date_str}"
+    
     label_xml = f"""<?xml version="1.0" encoding="utf-8"?>
 <DieCutLabel Version="8.0" Units="twips">
     <PaperOrientation>Landscape</PaperOrientation>
@@ -31,7 +35,7 @@ def print_sku_label(sku):
             <Verticalized>False</Verticalized>
             <StyledText>
                 <Element>
-                    <String>{sku}</String>
+                    <String>{label_text}</String>
                     <Attributes>
                         <Font Family="Helvetica" Size="36" Bold="True" Italic="False" Underline="False" StrikeOut="False"/>
                         <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
@@ -46,9 +50,6 @@ def print_sku_label(sku):
     </ObjectInfo>
 </DieCutLabel>"""
 
-    printers_response = requests.get(f"{DYMO_API}/GetPrinters")
-    printers_xml = printers_response.text
-    
     payload = {
         "printerName": "DYMO LabelWriter 4XL",
         "labelXml": label_xml,
